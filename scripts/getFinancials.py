@@ -15,11 +15,11 @@ def insert_company(year):
         args = (company['company_id'], company['name_latest'])
         try:
             cursor.execute(query, args)
-            mydb.commit()
         except Error as error:
             print(error)
      
     cursor.close()
+    mydb.commit()
     mydb.close()
 
 def update_indicator(year,indicator):
@@ -37,11 +37,11 @@ def update_indicator(year,indicator):
         args = (fields[2],fields[0])
         try:
             cursor.execute(query,args)
-            mydb.commit()
         except Error as error:
             print(error)
      
     cursor.close()
+    mydb.commit()
     mydb.close()
 
 def main():
