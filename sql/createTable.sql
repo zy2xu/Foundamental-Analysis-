@@ -1,0 +1,37 @@
+USE financials;
+
+CREATE TABLE Indicators ( 
+		ID int, Name varchar(100),
+		NetIncomeLoss bigint,
+		AssetsCurrent bigint,
+		LiabilitiesCurrent bigint,
+		PropertyPlantAndEquipmentNet bigint,
+		PropertyPlantAndEquipmentGross bigint,
+		LongTermDebtCurrent bigint,
+		LongTermDebtNoncurrent bigint,
+		Liabilities bigint,
+		StockholdersEquity bigint,
+		RetainedEarningsAccumulatedDeficit bigint,
+		GrossProfit bigint,
+		SalesRevenueNet bigint,
+		Revenues bigint,
+		SellingGeneralAndAdministrativeExpense bigint, 
+		ResearchAndDevelopmentExpense bigint,
+		DepreciationDepletionAndAmortization bigint,
+		InterestExpense bigint,
+		InterestExpenseDebt bigint,
+		InterestPaid bigint,
+		IncomeTaxExpenseBenefit bigint,
+		IncomeTaxesPaidNet bigint,
+		EarningsPerShareBasic bigint,
+		EarningsPerShareDiluted bigint,
+		Assets bigint, 
+		CashAndCashEquivalentsAtCarryingValue bigint, 
+		NetCashProvidedByUsedInFinancingActivities bigint, 
+		NetCashProvidedByUsedInInvestingActivities bigint, 
+		NetCashProvidedByUsedInOperatingActivities bigint, 
+		OperatingIncomeLoss bigint, 
+		Goodwill bigint, 
+		primary key (ID) 
+);
+
