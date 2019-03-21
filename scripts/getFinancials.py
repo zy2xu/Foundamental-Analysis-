@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import MySQLConnection, Error
 import requests
 
-def insert_company(year):
+def insert_company():
     
     query = "INSERT INTO financials.Indicators (ID,Name) VALUES(%s,%s)"
     mydb = mysql.connector.connect(host="localhost",user="root")
@@ -45,15 +45,15 @@ def update_indicator(year,indicator):
     mydb.close()
 
 def main():
-   # insert_company("2018")
+#    insert_company()
     indicators = ["NetIncomeLoss", "AssetsCurrent", "LiabilitiesCurrent", "PropertyPlantAndEquipmentNet", "PropertyPlantAndEquipmentGross", "LongTermDebtCurrent", "LongTermDebtNoncurrent", "Liabilities", "StockholdersEquity", "RetainedEarningsAccumulatedDeficit", "GrossProfit", "SalesRevenueNet", "Revenues", "SellingGeneralAndAdministrativeExpense", "ResearchAndDevelopmentExpense", "DepreciationDepletionAndAmortization", "InterestExpense", "InterestExpenseDebt", "InterestPaid", "IncomeTaxExpenseBenefit", "IncomeTaxesPaidNet", "EarningsPerShareBasic", "EarningsPerShareDiluted", "Assets", "CashAndCashEquivalentsAtCarryingValue", "NetCashProvidedByUsedInFinancingActivities", "NetCashProvidedByUsedInInvestingActivities", "NetCashProvidedByUsedInOperatingActivities", "OperatingIncomeLoss", "Goodwill"]
-    years = ["2017"]
+    years = ["2010","2011","2012","2013","2014","2015","2016"]
     for indicator in indicators:
         for year in years:
             update_indicator(year,indicator)
 
 if __name__ == '__main__':
-    main()
+	main()
 
 
 
