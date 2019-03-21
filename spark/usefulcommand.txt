@@ -33,3 +33,5 @@ val customSchema = StructType(Array(
         StructField("Goodwill", StringType, true)))
 
 val data = spark.read.format("csv").option("header","false").option("delimiter", ",").option("timestampFormat", "yyyy/MM/dd HH:mm:ss").schema(customSchema).load("file:///Users/zy2xu/Desktop/git/foundamentals/data/2017.csv")
+
+data.write.format("parquet").save("./data/2017.parquet")
