@@ -47,7 +47,7 @@ def update_indicator(year,indicator):
 def main():
 #    insert_company()
     indicators = ["NetIncomeLoss", "AssetsCurrent", "LiabilitiesCurrent", "PropertyPlantAndEquipmentNet", "PropertyPlantAndEquipmentGross", "LongTermDebtCurrent", "LongTermDebtNoncurrent", "Liabilities", "StockholdersEquity", "RetainedEarningsAccumulatedDeficit", "GrossProfit", "SalesRevenueNet", "Revenues", "SellingGeneralAndAdministrativeExpense", "ResearchAndDevelopmentExpense", "DepreciationDepletionAndAmortization", "InterestExpense", "InterestExpenseDebt", "InterestPaid", "IncomeTaxExpenseBenefit", "IncomeTaxesPaidNet", "EarningsPerShareBasic", "EarningsPerShareDiluted", "Assets", "CashAndCashEquivalentsAtCarryingValue", "NetCashProvidedByUsedInFinancingActivities", "NetCashProvidedByUsedInInvestingActivities", "NetCashProvidedByUsedInOperatingActivities", "OperatingIncomeLoss", "Goodwill"]
-    years = ["2010","2011","2012","2013","2014","2015","2016"]
+    years = ["2010","2011","2012","2013","2014","2015","2016","2017"]
     for indicator in indicators:
         for year in years:
             update_indicator(year,indicator)

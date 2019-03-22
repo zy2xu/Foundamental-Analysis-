@@ -35,3 +35,7 @@ val customSchema = StructType(Array(
 val data = spark.read.format("csv").option("header","false").option("delimiter", ",").option("timestampFormat", "yyyy/MM/dd HH:mm:ss").schema(customSchema).load("file:///Users/zy2xu/Desktop/git/foundamentals/data/2017.csv")
 
 data.write.format("parquet").save("./data/2017.parquet")
+
+val dataCombined = data.withColumn("CR", col("AssetsCurrent") / col("LiabilitiesCurrent")).withColumn("DE", col("Liabilities") / col("StockholdersEquity")).withColumn("GPM", col("GrossProfit") / col("Revenues")).withColumn("SGA", col("SellingGeneralAndAdministrativeExpense") / col("GrossProfit")).withColumn("NE", col("NetIncomeLoss") / col("Revenues"))
+
+dataCombined.filter("ROE is not null").filter("CR is not null").filter("DE is not NULL").filter("GPM is not null").filter("SGA is not null").filter("NE is not null").filter(col("Year") === "2017").select("Name","ROE","CR","DE","GPM","SGA","NE").orderBy(desc("ROE")).show
