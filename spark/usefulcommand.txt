@@ -36,6 +36,12 @@ val data = spark.read.format("csv").option("header","false").option("delimiter",
 
 data.write.format("parquet").save("./data/2017.parquet")
 
+val data17 = spark.read.parquet("./2017").withColumn("Year", lit("2017"))
+
+val data = dataCombined.withColumn("ROE", round($"ROE",3)).withColumn("CR", round($"CR",3)).withColumn("DE", round($"DE",3)).withColumn("GPM", round($"GPM",3)).withColumn("SGA", round($"SGA",3)).withColumn("NE", round($"NE",3))
+
 val dataCombined = data.withColumn("CR", col("AssetsCurrent") / col("LiabilitiesCurrent")).withColumn("DE", col("Liabilities") / col("StockholdersEquity")).withColumn("GPM", col("GrossProfit") / col("Revenues")).withColumn("SGA", col("SellingGeneralAndAdministrativeExpense") / col("GrossProfit")).withColumn("NE", col("NetIncomeLoss") / col("Revenues"))
 
-dataCombined.filter("ROE is not null").filter("CR is not null").filter("DE is not NULL").filter("GPM is not null").filter("SGA is not null").filter("NE is not null").filter(col("Year") === "2017").select("Name","ROE","CR","DE","GPM","SGA","NE").orderBy(desc("ROE")).show
+dataCombined.filter(col("ID") === "320193").select("Year","Name","ID","ROE","CR","DE","GPM","SGA","NE").orderBy(asc("Year")).show(10,false)
+
+dataCombined.filter("ROE is not null and ROE > 0").filter("CR is not null and CR > 1").filter("DE is not NULL and DE > 0").filter("GPM is not null").filter("SGA is not null").filter("NE is not null").filter(col("Year") === "2017").select("Name","ROE","CR","DE","GPM","SGA","NE").orderBy(desc("ROE")).show(200)
